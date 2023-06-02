@@ -4,7 +4,11 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ children, onSubmit }) => {
-  return <form onSubmit={onSubmit}>{children}</form>
+  return (
+    <form onSubmit={onSubmit} noValidate>
+      {children}
+    </form>
+  )
 }
 
 export default Form
