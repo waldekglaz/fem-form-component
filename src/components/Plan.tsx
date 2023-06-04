@@ -5,70 +5,49 @@ import BottomNav from './shared/BottomNav'
 import Form from './shared/Form'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import ArcadeLogo from '../assets/icon-arcade.svg'
-import AdvancedLogo from '../assets/icon-advanced.svg'
-import ProLogo from '../assets/icon-pro.svg'
-const defaultValues = {
-  values: {
-    plan: 'arcade',
-  },
-}
+import ButtonNext from './shared/ButtonNext'
+import PlanField from './PlanField'
+import { useSelector, useDispatch } from 'react-redux'
+import { setPlan, setIsMonthly } from '../rootSlice'
+
+const plans = [
+  { name: 'arcade', monthly: 9, anually: 90, logo: './src/assets/icon-arcade.svg' },
+  { name: 'advanced', monthly: 12, anually: 120, logo: './src/assets/icon-advanced.svg' },
+  { name: 'pro', monthly: 15, anually: 150, logo: './src/assets/icon-pro.svg' },
+]
+
 const Plan = () => {
-  const { register, handleSubmit } = useForm(defaultValues)
+  const dispatch = useDispatch()
+  const plan = useSelector((state) => state.plan.name)
+  const isMonthly = useSelector((state) => state.isMonthly)
+  const { register, handleSubmit } = useForm({ defaultValues: { plan } })
   const navigate = useNavigate()
+  const handleClick = () => {
+    dispatch(setIsMonthly())
+  }
   return (
     <Card>
       <Heading title="Select your plan" description="You have the option of monthly or yearly billing." />
       <Form
         onSubmit={handleSubmit((data) => {
-          defaultValues.values = { ...data }
+          dispatch(setPlan(data.plan))
           navigate('/add-ons')
         })}
       >
-        <ul className="">
-          <li className="mb-3">
-            <input type="radio" id="plan-arcade" {...register('plan')} value="arcade" className="hidden peer" required />
-            <label htmlFor="plan-arcade" className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-              <div className="flex gap-4 items-center">
-                <img src={ArcadeLogo} />
-                <div>
-                  <div className="w-full text-lg font-semibold">Arcade</div>
-                  <div className="w-full">$9/mo</div>
-                </div>
-              </div>
-            </label>
-          </li>
-          <li className="mb-3">
-            <input type="radio" id="plan-advanced" value="advanced" className="hidden peer" {...register('plan')} />
-            <label htmlFor="plan-advanced" className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-              <div className="flex gap-4 items-center">
-                <img src={AdvancedLogo} />
-                <div>
-                  <div className="w-full text-lg font-semibold">Advanced</div>
-                  <div className="w-full">$12/mo</div>
-                </div>
-              </div>
-            </label>
-          </li>
-          <li>
-            <input type="radio" id="plan-pro" value="pro" className="hidden peer" {...register('plan')} />
-            <label htmlFor="plan-pro" className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-              <div className="flex gap-4 items-center">
-                <img src={ProLogo} />
-                <div>
-                  <div className="w-full text-lg font-semibold">Pro</div>
-                  <div className="w-full">$15/mo</div>
-                </div>
-              </div>
-            </label>
-          </li>
+        <ul>
+          {plans.map((plan) => (
+            <PlanField key={plan.name} register={register('plan')} label={`plan-${plan.name}`} value={plan.name} img={plan.logo} price={isMonthly ? `$${plan.monthly}/mo` : `$${plan.anually}/yr`} isMonthly={isMonthly} />
+          ))}
         </ul>
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input onClick={handleClick} type="checkbox" value="" className="sr-only peer" />
+          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+          <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Toggle me</span>
+        </label>
         <BottomNav singleItem={false}>
           <Link to="/">Go Back</Link>
 
-          <button className="bg-sky-950 text-white text-sm px-4 py-3 rounded-md" type="submit">
-            Next Step
-          </button>
+          <ButtonNext />
         </BottomNav>
       </Form>
     </Card>

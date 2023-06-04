@@ -1,26 +1,26 @@
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { setName, setEmail, setPhoneNumber } from '../rootSlice'
 
 import Card from './shared/Card'
 import Heading from './shared/Heading'
 import Form from './shared/Form'
 import FormField from './shared/FormField'
 import BottomNav from './shared/BottomNav'
-
-const defaultValues = {
-  values: {
-    name: '',
-    email: '',
-    phone: '',
-  },
-}
+import ButtonNext from './shared/ButtonNext'
 
 const Home = () => {
+  const dispatch = useDispatch()
+  const name = useSelector((state) => state.name)
+  const email = useSelector((state) => state.email)
+  const phone = useSelector((state) => state.phoneNumber)
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm(defaultValues)
+  } = useForm({ defaultValues: { name, email, phone } })
 
   const navigate = useNavigate()
   return (
@@ -28,7 +28,9 @@ const Home = () => {
       <Heading title="Personal info" description="Please provide your name, email address, and phone number." />
       <Form
         onSubmit={handleSubmit((data) => {
-          defaultValues.values = { ...data }
+          dispatch(setName(data.name))
+          dispatch(setEmail(data.email))
+          dispatch(setPhoneNumber(data.phone))
           navigate('/plan')
         })}
       >
@@ -37,9 +39,7 @@ const Home = () => {
         <FormField error={errors.phone?.message} register={register('phone', { required: true })} inputType="tel" fieldName="phone" placeholder="e.g. +1 234 567 890" label="Phone Number" />
 
         <BottomNav singleItem={true}>
-          <button className="bg-sky-950 text-white text-sm px-4 py-3 rounded-md" type="submit">
-            Next Step
-          </button>
+          <ButtonNext />
         </BottomNav>
       </Form>
     </Card>

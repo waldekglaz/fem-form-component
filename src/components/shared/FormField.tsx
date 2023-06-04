@@ -1,3 +1,4 @@
+import { FieldError } from 'react-hook-form'
 interface FormFieldProps {
   error?: string
   register: any
