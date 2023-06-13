@@ -5,7 +5,7 @@ import Form from './shared/Form'
 import Heading from './shared/Heading'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { setOnlineService, setLargerStorage, setCustomProfile } from '../rootSlice'
+import { setOnlineService, setLargerStorage, setCustomProfile, setAAA } from '../rootSlice'
 import AddOnField from './shared/AddOnField'
 import { store } from '../store'
 const addOns = [
@@ -26,11 +26,13 @@ const AddOnes = () => {
       <Heading title="Pick add-ons" description="Add-ons help enhance your gaming experience." />
       <Form
         onSubmit={handleSubmit((data) => {
+          console.log(data)
+
           dispatch(setOnlineService(data.onlineService))
           dispatch(setLargerStorage(data.largerStorage))
           dispatch(setCustomProfile(data.customizableProfile))
 
-          navigate('/summary')
+          // navigate('/summary')
         })}
       >
         {addOns.map((addon) => (

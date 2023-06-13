@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { setName, setEmail, setPhoneNumber } from '../rootSlice'
+import { setName, setEmail, setPhoneNumber, setAAA } from '../rootSlice'
 
 import Card from './shared/Card'
 import Heading from './shared/Heading'
@@ -31,6 +31,7 @@ const Home = () => {
           dispatch(setName(data.name))
           dispatch(setEmail(data.email))
           dispatch(setPhoneNumber(data.phone))
+          dispatch(setAAA({ ...data }))
           navigate('/plan')
         })}
       >

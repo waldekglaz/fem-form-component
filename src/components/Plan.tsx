@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form'
 import ButtonNext from './shared/ButtonNext'
 import PlanField from './PlanField'
 import { useSelector, useDispatch } from 'react-redux'
-import { setPlan, setIsMonthly } from '../rootSlice'
+import { setPlan, setIsMonthly, setAAA } from '../rootSlice'
 
 const plans = [
   { name: 'arcade', monthly: 9, anually: 90, logo: './src/assets/icon-arcade.svg' },
@@ -30,7 +30,14 @@ const Plan = () => {
       <Heading title="Select your plan" description="You have the option of monthly or yearly billing." />
       <Form
         onSubmit={handleSubmit((data) => {
-          dispatch(setPlan(data.plan))
+          const filtered = plans.find((plan) => plan.name === data.plan)
+          const { name, monthly, anually } = filtered
+          if (isMonthly) {
+            dispatch(setPlan({ name, value: monthly }))
+          } else {
+            dispatch(setPlan({ name, value: anually }))
+          }
+
           navigate('/add-ons')
         })}
       >

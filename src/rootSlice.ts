@@ -3,10 +3,11 @@ import { createSlice } from '@reduxjs/toolkit'
 const rootSlice = createSlice({
   name: 'root',
   initialState: {
+    aaa: [],
     name: '',
     email: '',
     phoneNumber: '',
-    plan: { name: 'arcade', monthly: 9, anually: 90 },
+    plan: { name: 'arcade' },
     isMonthly: true,
     onlineService: { isChosen: false, monthyCost: 1, anuallyCost: 10 },
     largerStorage: { isChosen: false, monthyCost: 2, anuallyCost: 20 },
@@ -23,7 +24,7 @@ const rootSlice = createSlice({
       state.phoneNumber = action.payload
     },
     setPlan: (state, action) => {
-      state.plan.name = action.payload
+      state.plan = action.payload
     },
     setIsMonthly: (state) => {
       state.isMonthly = !state.isMonthly
@@ -37,9 +38,12 @@ const rootSlice = createSlice({
     setCustomProfile: (state, action) => {
       state.customizableProfile.isChosen = action.payload
     },
+    setAAA: (state, action) => {
+      state.aaa.push(action.payload)
+    },
   },
 })
 
 export const reducer = rootSlice.reducer
 
-export const { setName, setEmail, setPhoneNumber, setPlan, setIsMonthly, setOnlineService, setLargerStorage, setCustomProfile } = rootSlice.actions
+export const { setName, setEmail, setPhoneNumber, setPlan, setIsMonthly, setOnlineService, setLargerStorage, setCustomProfile, setAAA } = rootSlice.actions
