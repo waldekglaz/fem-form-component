@@ -28,11 +28,11 @@ const AddOnes = () => {
         onSubmit={handleSubmit((data) => {
           console.log(data)
 
-          dispatch(setOnlineService(data.onlineService))
-          dispatch(setLargerStorage(data.largerStorage))
-          dispatch(setCustomProfile(data.customizableProfile))
+          dispatch(setOnlineService({ isChosen: data.onlineService, value: isMonthly ? (data.onlineService ? addOns[0].monthlyCost : 0) : data.onlineService ? addOns[0].anuallyCost : 0 }))
+          dispatch(setLargerStorage({ isChosen: data.largerStorage, value: isMonthly ? (data.largerStorage ? addOns[1].monthlyCost : 0) : data.largerStorage ? addOns[1].anuallyCost : 0 }))
+          dispatch(setCustomProfile({ isChosen: data.customizableProfile, value: isMonthly ? (data.customizableProfile ? addOns[2].monthlyCost : 0) : data.customizableProfile ? addOns[2].anuallyCost : 0 }))
 
-          // navigate('/summary')
+          navigate('/summary')
         })}
       >
         {addOns.map((addon) => (

@@ -30,13 +30,13 @@ const rootSlice = createSlice({
       state.isMonthly = !state.isMonthly
     },
     setOnlineService: (state, action) => {
-      state.onlineService.isChosen = action.payload
+      state.onlineService = action.payload
     },
     setLargerStorage: (state, action) => {
-      state.largerStorage.isChosen = action.payload
+      state.largerStorage = action.payload
     },
     setCustomProfile: (state, action) => {
-      state.customizableProfile.isChosen = action.payload
+      state.customizableProfile = action.payload
     },
     setAAA: (state, action) => {
       state.aaa.push(action.payload)
