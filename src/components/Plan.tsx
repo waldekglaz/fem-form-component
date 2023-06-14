@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form'
 import ButtonNext from './shared/ButtonNext'
 import PlanField from './PlanField'
 import { useSelector, useDispatch } from 'react-redux'
-import { setPlan, setIsMonthly, setAAA } from '../rootSlice'
+import { setPlan, setIsMonthly } from '../rootSlice'
 
 const plans = [
   { name: 'arcade', monthly: 9, anually: 90, logo: './src/assets/icon-arcade.svg' },
