@@ -50,7 +50,10 @@ const Plan = () => {
         })}
       >
         <ul>{renderPlans}</ul>
-        <Toggler handleClick={handleClick} />
+        <div className="text-center">
+          <Toggler handleClick={handleClick} isMonthly={isMonthly} />
+        </div>
+
         <BottomNav singleItem={false}>
           <Link to="/">Go Back</Link>
           <ButtonNext />

@@ -1,9 +1,11 @@
+import { UseFormRegister, FieldValue } from 'react-hook-form'
 interface AddOnFieldProps {
-  register: Function
-  label: 'onlineService' | 'largerStorage' | 'customizableProfile'
+  register: UseFormRegister<FieldValue>
+  label: string
   title: string
   description: string
   cost: string
+  value?: number
 }
 
 const AddOnField: React.FC<AddOnFieldProps> = ({ register, label, title, description, cost }) => {

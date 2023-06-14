@@ -1,17 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
+const initialState = {
+  name: '',
+  email: '',
+  phoneNumber: '',
+  plan: { name: 'arcade', value: 0 },
+  isMonthly: true,
+  onlineService: { isChosen: false, value: 0 },
+  largerStorage: { isChosen: false, value: 0 },
+  customizableProfile: { isChosen: false, value: 0 },
+}
 
 const rootSlice = createSlice({
   name: 'root',
-  initialState: {
-    name: '',
-    email: '',
-    phoneNumber: '',
-    plan: { name: 'arcade' },
-    isMonthly: true,
-    onlineService: { isChosen: false, monthyCost: 1, anuallyCost: 10 },
-    largerStorage: { isChosen: false, monthyCost: 2, anuallyCost: 20 },
-    customizableProfile: { isChosen: false, monthyCost: 2, anuallyCost: 20 },
-  },
+  initialState,
   reducers: {
     setName: (state, action) => {
       state.name = action.payload

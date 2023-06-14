@@ -1,20 +1,16 @@
 import { useState } from 'react'
-import Card from './shared/Card'
-import Heading from './shared/Heading'
-import BottomNav from './shared/BottomNav'
+import { Card, Heading, BottomNav } from './shared'
 import { Link } from 'react-router-dom'
 import { store } from '../store'
-import { addOns } from '../data'
 import ConfirmationMessage from './ConfirmationMessage'
 
 const Summary = () => {
-  const [confirmationMsg, setConfirmationMsg] = useState(false)
+  const [confirmationMsg, setConfirmationMsg] = useState<boolean>(false)
   const handleConfirm = () => {
     setConfirmationMsg(true)
   }
   const formData = store.getState()
   const { plan, isMonthly, customizableProfile, largerStorage, onlineService } = formData
-  console.log(formData)
   return (
     <Card>
       {!confirmationMsg && (
