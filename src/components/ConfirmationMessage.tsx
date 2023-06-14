@@ -1,5 +1,3 @@
-import React from 'react'
-import Card from './shared/Card'
 import Icon from '../assets/icon-thank-you.svg'
 
 const ConfirmationMessage = () => {

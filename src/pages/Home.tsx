@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { setName, setEmail, setPhoneNumber } from '../rootSlice'
-import { Card, Heading, Form, FormField, BottomNav, ButtonNext } from './shared'
+import { Card, Heading, Form, FormField, BottomNav, ButtonNext } from '../components/shared'
 
 interface RootState {
   name: string

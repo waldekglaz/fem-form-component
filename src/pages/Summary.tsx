@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { Card, Heading, BottomNav, BackButton } from './shared'
+import { Card, Heading, BottomNav, BackButton } from '../components/shared'
 import { Link } from 'react-router-dom'
 import { store } from '../store'
-import ConfirmationMessage from './ConfirmationMessage'
+import ConfirmationMessage from '../components/ConfirmationMessage'
 
 const Summary = () => {
   const [confirmationMsg, setConfirmationMsg] = useState<boolean>(false)

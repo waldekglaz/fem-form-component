@@ -1,9 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
-import Home from './components/Home'
-import Plan from './components/Plan'
-import AddOnes from './components/AddOns'
-import Summary from './components/Summary'
+import { Home, Plan, AddOns, Summary } from './pages'
 
 function App() {
   return (
@@ -14,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="plan" element={<Plan />} />
-          <Route path="add-ons" element={<AddOnes />} />
+          <Route path="add-ons" element={<AddOns />} />
           <Route path="summary" element={<Summary />} />
         </Routes>
       </div>

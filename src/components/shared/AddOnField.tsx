@@ -1,7 +1,7 @@
-import { UseFormRegister, FieldValue } from 'react-hook-form'
+import { UseFormRegisterReturn, FieldValue } from 'react-hook-form'
 interface AddOnFieldProps {
-  register: UseFormRegister<FieldValue>
-  label: string
+  register: UseFormRegisterReturn<'onlineService' | 'largerStorage' | 'customizableProfile' | string>
+  label: string | 'onlineService' | 'largerStorage' | 'customizableProfile'
   title: string
   description: string
   cost: string
