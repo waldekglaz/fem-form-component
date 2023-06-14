@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Card, Heading, BottomNav } from './shared'
+import { Card, Heading, BottomNav, BackButton } from './shared'
 import { Link } from 'react-router-dom'
 import { store } from '../store'
 import ConfirmationMessage from './ConfirmationMessage'
@@ -15,7 +15,7 @@ const Summary = () => {
     <Card>
       {!confirmationMsg && (
         <>
-          <Heading title="Finishing up" description={`${formData.name} double-check  everything looks OK before confirming.`} />
+          <Heading title="Finishing up" description="Double-check  everything looks OK before confirming." />
           <div className="bg-sky-50 p-4 rounded-lg">
             <div className="border-b pb-3 flex justify-between items-center mb-3">
               <div>
@@ -64,7 +64,7 @@ const Summary = () => {
           </div>
 
           <BottomNav singleItem={false}>
-            <Link to="/add-ons">Go Back</Link>
+            <BackButton link="/add-ons" />
             <button className="bg-blue-500 px-4 py-3  text-white rounded-lg" onClick={handleConfirm}>
               Confirm
             </button>

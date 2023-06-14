@@ -5,5 +5,6 @@ import Card from './Card'
 import Form from './Form'
 import FormField from './FormField'
 import Heading from './Heading'
+import BackButton from './BackButton'
 
-export { AddOnField, BottomNav, ButtonNext, Card, Form, FormField, Heading }
+export { AddOnField, BottomNav, ButtonNext, Card, Form, FormField, Heading, BackButton }

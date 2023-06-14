@@ -1,6 +1,6 @@
 import { useNavigate, Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { Card, Heading, BottomNav, Form, ButtonNext } from './shared'
+import { Card, Heading, BottomNav, Form, ButtonNext, BackButton } from './shared'
 import Toggler from './Toggler'
 import PlanField from './PlanField'
 import { useSelector, useDispatch } from 'react-redux'
@@ -50,12 +50,12 @@ const Plan = () => {
         })}
       >
         <ul className="lg:flex lg:gap-4">{renderPlans}</ul>
-        <div className="text-center">
+        <div className="text-center mt-[20px] bg-blue-50 py-[13px] rounded-lg">
           <Toggler handleClick={handleClick} isMonthly={isMonthly} />
         </div>
 
         <BottomNav singleItem={false}>
-          <Link to="/">Go Back</Link>
+          <BackButton link="/" />
           <ButtonNext />
         </BottomNav>
       </Form>

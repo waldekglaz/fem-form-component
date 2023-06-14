@@ -1,5 +1,5 @@
-import { BottomNav, Card, Form, Heading, AddOnField, ButtonNext } from './shared'
-import { Link, useNavigate } from 'react-router-dom'
+import { BottomNav, Card, Form, Heading, AddOnField, ButtonNext, BackButton } from './shared'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { setOnlineService, setLargerStorage, setCustomProfile } from '../rootSlice'
@@ -44,7 +44,8 @@ const AddOnes = () => {
         {renderAddons}
 
         <BottomNav singleItem={false}>
-          <Link to="/plan">Go Back</Link>
+          <BackButton link="/plan" />
+
           <ButtonNext />
         </BottomNav>
       </Form>

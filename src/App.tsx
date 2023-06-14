@@ -8,7 +8,7 @@ import Summary from './components/Summary'
 function App() {
   return (
     <main className="relative min-h-screen bg-blue-50 lg:flex justify-center items-center">
-      <div className="bg-white lg:flex lg:w-[940px] lg:h-[600px] lg:rounded-xl lg:p-4 lg:relative">
+      <div className="bg-white lg:flex lg:w-[940px] lg:h-[600px] rounded-xl lg:p-4 lg:relative">
         <Header />
 
         <Routes>

@@ -6,7 +6,7 @@ interface TogglerProps {
 
 const Toggler: React.FC<TogglerProps> = ({ handleClick, isMonthly }) => {
   return (
-    <div className="flex justify-center items-center lg:mt-8">
+    <div className="flex justify-center items-center ">
       <span className={` text-sm  ${isMonthly ? 'text-gray-900 font-bold' : 'text-gray-500 font-medium'}  mr-2`}>Monthly</span>
       <label className="relative inline-flex items-center cursor-pointer ">
         <input onClick={handleClick} type="checkbox" value="" className="sr-only peer" />
