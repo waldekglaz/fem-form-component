@@ -37,12 +37,9 @@ const rootSlice = createSlice({
     setCustomProfile: (state, action) => {
       state.customizableProfile = action.payload
     },
-    setAAA: (state, action) => {
-      state.aaa.push(action.payload)
-    },
   },
 })
 
 export const reducer = rootSlice.reducer
 
-export const { setName, setEmail, setPhoneNumber, setPlan, setIsMonthly, setOnlineService, setLargerStorage, setCustomProfile, setAAA } = rootSlice.actions
+export const { setName, setEmail, setPhoneNumber, setPlan, setIsMonthly, setOnlineService, setLargerStorage, setCustomProfile } = rootSlice.actions

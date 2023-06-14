@@ -2,20 +2,20 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { setName, setEmail, setPhoneNumber, setAAA } from '../rootSlice'
+import { setName, setEmail, setPhoneNumber } from '../rootSlice'
+import { Card, Heading, Form, FormField, BottomNav, ButtonNext } from './shared'
 
-import Card from './shared/Card'
-import Heading from './shared/Heading'
-import Form from './shared/Form'
-import FormField from './shared/FormField'
-import BottomNav from './shared/BottomNav'
-import ButtonNext from './shared/ButtonNext'
+interface RootState {
+  name: string
+  email: string
+  phoneNumber: string
+}
 
 const Home = () => {
   const dispatch = useDispatch()
-  const name = useSelector((state) => state.name)
-  const email = useSelector((state) => state.email)
-  const phone = useSelector((state) => state.phoneNumber)
+  const name = useSelector((state: RootState) => state.name)
+  const email = useSelector((state: RootState) => state.email)
+  const phone = useSelector((state: RootState) => state.phoneNumber)
   const {
     register,
     handleSubmit,
