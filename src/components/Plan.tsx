@@ -49,7 +49,7 @@ const Plan = () => {
           navigate('/add-ons')
         })}
       >
-        <ul>{renderPlans}</ul>
+        <ul className="lg:flex lg:gap-4">{renderPlans}</ul>
         <div className="text-center">
           <Toggler handleClick={handleClick} isMonthly={isMonthly} />
         </div>

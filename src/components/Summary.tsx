@@ -16,7 +16,7 @@ const Summary = () => {
       {!confirmationMsg && (
         <>
           <Heading title="Finishing up" description={`${formData.name} double-check  everything looks OK before confirming.`} />
-          <div className="bg-sky-50 p-4">
+          <div className="bg-sky-50 p-4 rounded-lg">
             <div className="border-b pb-3 flex justify-between items-center mb-3">
               <div>
                 <div className="text-sky-950  capitalize font-bold">
@@ -65,7 +65,7 @@ const Summary = () => {
 
           <BottomNav singleItem={false}>
             <Link to="/add-ons">Go Back</Link>
-            <button className="bg-blue-500 px-[22px] py-3 text-white rounded-lg" onClick={handleConfirm}>
+            <button className="bg-blue-500 px-4 py-3  text-white rounded-lg" onClick={handleConfirm}>
               Confirm
             </button>
           </BottomNav>
