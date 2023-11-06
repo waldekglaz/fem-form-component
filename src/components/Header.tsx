@@ -13,12 +13,22 @@ const Header = () => {
       <nav className="flex justify-center gap-4 lg:flex-col">
         {navItems.map((item, i) => (
           <div className="lg:flex gap-6 items-center">
-            <NavLink className={({ isActive }) => (isActive ? 'block pointer-events-none text-sky-900 text-sm w-8 h-8 border text-center rounded-full leading-8 bg-blue-100 font-bold' : 'block pointer-events-none text-white text-sm w-8 h-8 border text-center rounded-full leading-8 font-bold')} key={i} to={item.url}>
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? 'block pointer-events-none text-sky-900 text-sm w-8 h-8 border text-center rounded-full leading-8 bg-blue-100 font-bold'
+                  : 'block pointer-events-none text-white text-sm w-8 h-8 border text-center rounded-full leading-8 font-bold'
+              }
+              key={i}
+              to={item.url}
+              data-cy={`step-${i + 1}`}>
               {i + 1}
             </NavLink>
             <div className="hidden lg:block">
               <p className="text-xs text-gray-200">Step {i + 1}</p>
-              <p className="text-base text-white font-bold uppercase">{item.description}</p>
+              <p className="text-base text-white font-bold uppercase">
+                {item.description}
+              </p>
             </div>
           </div>
         ))}
